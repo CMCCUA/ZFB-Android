@@ -29,7 +29,6 @@
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.SEND_SMS" />
 <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
@@ -74,15 +73,50 @@ mListener = new TokenListener() {
     }
 };
 ```
+日志打印回调，`TraceLogger`的实现示例代码如下：
+
+```java
+mTraceLogger = new TraceLogger() {
+            @Override
+            public void verbose(String tag, String msg) {
+
+            }
+
+            @Override
+            public void debug(String tag, String msg) {
+                Log.d(tag, msg);
+            }
+
+            @Override
+            public void info(String tag, String msg) {
+                Log.i(tag, msg);
+            }
+
+            @Override
+            public void warn(String tag, String msg, Throwable tr) {
+
+            }
+
+            @Override
+            public void error(String tag, String msg, Throwable tr) {
+                Log.e(tag, msg);
+                if (tr!= null){
+                    tr.printStackTrace();
+                }
+
+            }
+        };
+```
 
 **3. 接口调用**
 
 ```java
 mAuthnHelper.umcLoginByType(Constant.APP_ID, 
-        Constant.APP_KEY,
+        	Constant.APP_KEY,
 		"200", 
-		System.currentTimeMillis()+""
-        mListener);
+		System.currentTimeMillis()+"",
+        	mListener,
+		mTraceLogger);
 ```
 
 
@@ -132,9 +166,10 @@ public AuthnHelper (Context context)
 ```java
 public void umcLoginByType(final String appId, 
             final String appKey, 
-			final String capaid, 
-			final String capaidTime,
-            final TokenListener listener)
+	    final String capaid, 
+	    final String capaidTime,
+            final TokenListener listener, 
+	    TraceLogger mTraceLogger)
 ```
 
 </br>
@@ -150,6 +185,7 @@ public void umcLoginByType(final String appId,
 | capaid     | String        | 授权内容：获取手机号码 200                          |
 | capaidTime | String        | 授权时间 为13位的时间毫秒值 例如：  1509330580234       |
 | listener   | TokenListener | TokenListener为回调监听器，是一个java接口，需要调用者自己实现；TokenListener是接口中的认证登录token回调接口，OnGetTokenComplete是该接口中唯一的抽象方法，即void OnGetTokenComplete(JSONObject  jsonobj) |
+| mTraceLogger   | TraceLogger | TraceLogger为回调日志打印，是一个java接口，需要调用者自己实现；|
 
 **响应参数**
 
@@ -172,10 +208,11 @@ OnGetTokenComplete的参数JSONObject，含义如下：
 
 ```java
 mAuthnHelper.umcLoginByType(Constant.APP_ID, 
-        Constant.APP_KEY,
+        	Constant.APP_KEY,
 		"200", 
 		System.currentTimeMillis()+"",
-        mListener);
+        	mListener,
+		mTraceLogger);
 ```
 
 **响应示例代码**
