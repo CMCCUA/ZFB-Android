@@ -263,8 +263,8 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 | appid         | 必选      | 2    | string | 业务在统一认证申请的应用id                           |
 | apptype       | 必选      | 2    | string | 1:BOSS<br />2:web<br />3:wap<br />4:pc客户端<br />5:手机客户端 |
 | expandparams  | 扩展参数    | 2    | Map    | map(key,value)                           |
-| body          | 必选      | 1    |        |                                          |
 | sign          | 当有密钥时必填 | 2    | String | 业务端RSA私钥签名（appid+token）, 服务端使用支付宝提供的公钥进行RSA公钥解密        |
+| body          | 必选      | 1    |        |                                          |
 | token         | 必选      | 2    | string | 需要解析的凭证值。                                |
 
 **请求示例**
