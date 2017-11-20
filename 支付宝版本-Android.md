@@ -178,14 +178,14 @@ public void umcLoginByType(final String appId,
 
 **请求参数**
 
-| 参数         | 类型            | 说明                                       |
-| :--------- | :------------ | :--------------------------------------- |
-| appId      | String        | 应用的AppID                                 |
-| appkey     | String        | 应用密钥                                     |
-| capaid     | String        | 授权内容：获取手机号码 200                          |
-| capaidTime | String        | 授权时间 为13位的时间毫秒值 例如：  1509330580234       |
-| listener   | TokenListener | TokenListener为回调监听器，是一个java接口，需要调用者自己实现；TokenListener是接口中的认证登录token回调接口，OnGetTokenComplete是该接口中唯一的抽象方法，即void OnGetTokenComplete(JSONObject  jsonobj) |
-| mTraceLogger   | TraceLogger | TraceLogger为回调日志打印，是一个java接口，需要调用者自己实现；|
+| 参数           | 类型            | 说明                                       |
+| :----------- | :------------ | :--------------------------------------- |
+| appId        | String        | 应用的AppID                                 |
+| appkey       | String        | 应用密钥                                     |
+| capaid       | String        | 授权内容：获取手机号码 200                          |
+| capaidTime   | String        | 授权时间 为13位的时间毫秒值 例如：  1509330580234       |
+| listener     | TokenListener | TokenListener为回调监听器，是一个java接口，需要调用者自己实现；TokenListener是接口中的认证登录token回调接口，OnGetTokenComplete是该接口中唯一的抽象方法，即void OnGetTokenComplete(JSONObject  jsonobj) |
+| mTraceLogger | TraceLogger   | TraceLogger为回调日志打印，是一个java接口，需要调用者自己实现；  |
 
 **响应参数**
 
@@ -247,7 +247,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 
 **请求方法：**POST+JSON
 
-### 3.1.3.参数说明
+### 3.1.3. 参数说明
 
 **请求参数**
 
@@ -263,7 +263,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 | appid         | 必选      | 2    | string | 业务在统一认证申请的应用id                           |
 | apptype       | 必选      | 2    | string | 1:BOSS<br />2:web<br />3:wap<br />4:pc客户端<br />5:手机客户端 |
 | expandparams  | 扩展参数    | 2    | Map    | map(key,value)                           |
-| sign          | 当有密钥时必填 | 2    | String | 业务端RSA私钥签名（appid+token）, 服务端使用支付宝提供的公钥进行RSA公钥解密        |
+| sign          | 当有密钥时必填 | 2    | String | 业务端RSA私钥签名（appid+token）, 服务端使用支付宝提供的公钥进行RSA公钥解密 |
 | body          | 必选      | 1    |        |                                          |
 | token         | 必选      | 2    | string | 需要解析的凭证值。                                |
 
@@ -302,7 +302,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 | usessionid          | 可选   | 2    | string | 暂忽略                                      |
 | passid              | 可选   | 2    | string | 用户统一账号的系统标识                              |
 | andid               | 可选   | 2    | string | 用户的“和ID”                                 |
-| msisdn              | 可选   | 2    | string | 表示手机号码(当appid有支付宝提供的密钥时，手机号用RSA公钥加密返回。使用私钥可以) |
+| msisdn              | 可选   | 2    | string | 表示手机号码(当appid有支付宝提供的密钥时，手机号用RSA公钥加密返回。使用私钥可以) |
 | email               | 可选   | 2    | string | 表示邮箱地址                                   |
 | loginidtype         | 可选   | 2    | string | 登录使用的用户标识：</br>0：手机号码</br>1：邮箱           |
 | msisdntype          | 可选   | 2    | string | 手机号码的归属运营商：</br>0：中国移动</br>1：中国电信</br>2：中国联通</br>99：未知的异网手机号码 |
