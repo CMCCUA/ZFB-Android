@@ -115,6 +115,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
         	Constant.APP_KEY,
 		"200", 
 		System.currentTimeMillis()+"",
+		"222"
         	mListener,
 		mTraceLogger);
 ```
@@ -168,6 +169,7 @@ public void umcLoginByType(final String appId,
             final String appKey, 
 	    final String capaid, 
 	    final String capaidTime,
+	    String scene,
             final TokenListener listener, 
 	    TraceLogger mTraceLogger)
 ```
@@ -184,6 +186,7 @@ public void umcLoginByType(final String appId,
 | appkey       | String        | 应用密钥                                     |
 | capaid       | String        | 授权内容：获取手机号码 200                          |
 | capaidTime   | String        | 授权时间 为13位的时间毫秒值 例如：  1509330580234       |
+| scene   | String        | 场景参数      |
 | listener     | TokenListener | TokenListener为回调监听器，是一个java接口，需要调用者自己实现；TokenListener是接口中的认证登录token回调接口，OnGetTokenComplete是该接口中唯一的抽象方法，即void OnGetTokenComplete(JSONObject  jsonobj) |
 | mTraceLogger | TraceLogger   | TraceLogger为回调日志打印，是一个java接口，需要调用者自己实现；  |
 
@@ -211,6 +214,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
         	Constant.APP_KEY,
 		"200", 
 		System.currentTimeMillis()+"",
+		"202"
         	mListener,
 		mTraceLogger);
 ```
