@@ -116,8 +116,8 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 		"200", 
 		System.currentTimeMillis()+"",
 		"",
-		1200, 
-		1300,
+		12000, 
+		12000,
         	mListener,
 		mTraceLogger);
 ```
@@ -222,7 +222,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 		System.currentTimeMillis()+"",
 		"",
 		12000, 
-		1200,
+		12000,
         	mListener,
 		mTraceLogger);
 ```
