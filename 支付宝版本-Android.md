@@ -115,7 +115,9 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
         	Constant.APP_KEY,
 		"200", 
 		System.currentTimeMillis()+"",
-		""
+		"",
+		1200, 
+		1300,
         	mListener,
 		mTraceLogger);
 ```
@@ -170,6 +172,8 @@ public void umcLoginByType(final String appId,
 	    final String capaid, 
 	    final String capaidTime,
 	    String scene,
+	    int connTimeOut, 
+	    int readTimeOut,
             final TokenListener listener, 
 	    TraceLogger mTraceLogger)
 ```
@@ -187,6 +191,8 @@ public void umcLoginByType(final String appId,
 | capaid       | String        | 授权内容：获取手机号码 200                          |
 | capaidTime   | String        | 授权时间 为13位的时间毫秒值 例如：  1509330580234       |
 | scene   | String        | 场景参数  默认为空  |
+| connTimeOut   | int        | 网络请求连接超时参数  单位为ms  |
+| readTimeOut   | int        | 网络请求读取超时参数  单位为ms  |
 | listener     | TokenListener | TokenListener为回调监听器，是一个java接口，需要调用者自己实现；TokenListener是接口中的认证登录token回调接口，OnGetTokenComplete是该接口中唯一的抽象方法，即void OnGetTokenComplete(JSONObject  jsonobj) |
 | mTraceLogger | TraceLogger   | TraceLogger为回调日志打印，是一个java接口，需要调用者自己实现；  |
 
@@ -214,7 +220,9 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
         	Constant.APP_KEY,
 		"200", 
 		System.currentTimeMillis()+"",
-		""
+		"",
+		12000, 
+		1200,
         	mListener,
 		mTraceLogger);
 ```
@@ -230,6 +238,34 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
     "token": "8484010001330200374D455979526A49354E6A59774E444D314E454E47516B4D3140687474703A2F2F3231312E3133362E31302E3133313A383038302F40303103000402D59A6B040012383030313230313730383138313031343437050010D2F28C555CB54316B7D031DE9F6F6B1EFF0020F07B4AAFC3B1499A250AAAB4272BBFB565B440FFA5C8257E90C28595956CC224"
 }
 ```
+
+## 2.3. 取消获取校验凭证token
+
+### 2.2.1. 方法描述
+
+开发者调用SDK获取token 超过一定时间没有返回token的时候调用此方法进行取消。</br>
+
+
+**原型**
+
+```java
+public void cancel()
+```
+
+</br>
+
+
+
+### 2.2.3. 示例
+
+**请求示例代码**
+
+```java
+
+  mAuthnHelper.cancel();               
+ 
+```
+
 
 
 
