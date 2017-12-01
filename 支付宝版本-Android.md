@@ -241,7 +241,7 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 
 ## 2.3. 取消获取校验凭证token
 
-### 2.2.1. 方法描述
+### 2.3.1. 方法描述
 
 开发者调用SDK获取token 超过一定时间没有返回token的时候调用此方法进行取消。</br>
 
@@ -256,7 +256,7 @@ public void cancel()
 
 
 
-### 2.2.3. 示例
+### 2.3.2. 示例
 
 **请求示例代码**
 
