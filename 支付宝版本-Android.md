@@ -14,7 +14,7 @@
 
 ## 1.2. 新建工程并导入SDK的jar文件
 
-将`ZFB_Android_*.jar`拷贝到应用工程的libs目录下，如没有该目录，可新建；
+将`mobile_auth_android_*.jar`拷贝到应用工程的libs目录下，如没有该目录，可新建；
 
 </br>
 
