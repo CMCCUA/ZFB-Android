@@ -189,9 +189,9 @@ public void umcLoginByType(final String appId,
 | appkey       | String        | 应用密钥                                     |
 | capaid       | String        | 授权内容：获取手机号码 200                          |
 | capaidTime   | String        | 授权时间 为13位的时间毫秒值 例如：  1509330580234       |
-| scene   | String        | 场景参数  默认为空  |
-| connTimeOut   | int        | 网络请求连接超时参数  单位为ms  |
-| readTimeOut   | int        | 网络请求读取超时参数  单位为ms  |
+| scene        | String        | 场景参数  默认为空                               |
+| connTimeOut  | int           | 网络请求连接超时参数  单位为ms                        |
+| readTimeOut  | int           | 网络请求读取超时参数  单位为ms                        |
 | listener     | TokenListener | TokenListener为回调监听器，是一个java接口，需要调用者自己实现；TokenListener是接口中的认证登录token回调接口，OnGetTokenComplete是该接口中唯一的抽象方法，即void OnGetTokenComplete(JSONObject  jsonobj) |
 | mTraceLogger | TraceLogger   | TraceLogger为回调日志打印，是一个java接口，需要调用者自己实现；  |
 
@@ -302,7 +302,7 @@ public void cancel()
 | appid         | 必选      | 2    | string | 业务在统一认证申请的应用id                           |
 | apptype       | 必选      | 2    | string | 1:BOSS<br />2:web<br />3:wap<br />4:pc客户端<br />5:手机客户端 |
 | expandparams  | 扩展参数    | 2    | Map    | map(key,value)                           |
-| sign          | 当有密钥时必填 | 2    | String | 业务端RSA私钥签名（appid+token）, 服务端使用支付宝提供的公钥进行RSA公钥解密 |
+| sign          | 当有密钥时必填 | 2    | String | 业务端RSA私钥签名（appid+token）, 服务端使用开发者提供的公钥进行RSA公钥解密 |
 | body          | 必选      | 1    |        |                                          |
 | token         | 必选      | 2    | string | 需要解析的凭证值。                                |
 
@@ -341,7 +341,7 @@ public void cancel()
 | usessionid          | 可选   | 2    | string | 暂忽略                                      |
 | passid              | 可选   | 2    | string | 用户统一账号的系统标识                              |
 | andid               | 可选   | 2    | string | 用户的“和ID”                                 |
-| msisdn              | 可选   | 2    | string | 表示手机号码(当appid有支付宝提供的密钥时，手机号用RSA公钥加密返回。使用私钥可以) |
+| msisdn              | 可选   | 2    | string | 表示手机号码(当appid有开发者提供的密钥时，手机号用RSA公钥加密返回。使用私钥可以) |
 | email               | 可选   | 2    | string | 表示邮箱地址                                   |
 | loginidtype         | 可选   | 2    | string | 登录使用的用户标识：</br>0：手机号码</br>1：邮箱           |
 | msisdntype          | 可选   | 2    | string | 手机号码的归属运营商：</br>0：中国移动</br>1：中国电信</br>2：中国联通</br>99：未知的异网手机号码 |
@@ -447,37 +447,37 @@ public void cancel()
 
 ## 4.2. SDK返回码说明
 
-| 错误编号   | 返回码描述                |
-| ------ | -------------------- |
-| 103000 | 成功                   |
-| 102101 | 无网络                  |
-| 102102 | 网络异常                 |
-| 102223 | 数据解析异常               |
-| 102121 | 用户取消认证               |
-| 102505 | 业务未注册                |
-| 102506 | 请求出错                 |
-| 102507 | 请求超时                 |
-| 102201 | 自动登陆失败               |
-| 102202 | 应用签名失败               |
-| 102203 | 输入参数错误               |
-| 102204 | 正在gettoken处理         |
-| 102210 | 指定号码非本机号码            |
-| 102211 | 短信验证码验证成功后返回随机码为空    |
-| 102222 | http响应头中没有结果码        |
-| 102299 | other failed         |
-| 102302 | 调用service超时          |
-| 103117 | mac异常 macError       |
-| 103200 | ks无需更新               |
-| 103203 | 缓存用户不存在              |
-| 200001 | imsi为空，跳到短信验证码登录     |
-| 200002 | imsi为空，没有短信验证码登录功能   |
-| 200003 | 复用中间件首次登录            |
-| 200004 | 复用中间件二次登录            |
-| 200005 | 用户未授权READ_PHONE_STATE                |
-| 200006 | 用户未授权SEND_SMS                |
-| 200007 | 不支持的认证方式 跳到短信验证码登录   |
-| 200008 | 不支持的认证方式 没有短信验证码登录功能 |
-| 200009 | 应用合法性校验失败            |
+| 错误编号   | 返回码描述                 |
+| ------ | --------------------- |
+| 103000 | 成功                    |
+| 102101 | 无网络                   |
+| 102102 | 网络异常                  |
+| 102223 | 数据解析异常                |
+| 102121 | 用户取消认证                |
+| 102505 | 业务未注册                 |
+| 102506 | 请求出错                  |
+| 102507 | 请求超时                  |
+| 102201 | 自动登陆失败                |
+| 102202 | 应用签名失败                |
+| 102203 | 输入参数错误                |
+| 102204 | 正在gettoken处理          |
+| 102210 | 指定号码非本机号码             |
+| 102211 | 短信验证码验证成功后返回随机码为空     |
+| 102222 | http响应头中没有结果码         |
+| 102299 | other failed          |
+| 102302 | 调用service超时           |
+| 103117 | mac异常 macError        |
+| 103200 | ks无需更新                |
+| 103203 | 缓存用户不存在               |
+| 200001 | imsi为空，跳到短信验证码登录      |
+| 200002 | imsi为空，没有短信验证码登录功能    |
+| 200003 | 复用中间件首次登录             |
+| 200004 | 复用中间件二次登录             |
+| 200005 | 用户未授权READ_PHONE_STATE |
+| 200006 | 用户未授权SEND_SMS         |
+| 200007 | 不支持的认证方式 跳到短信验证码登录    |
+| 200008 | 不支持的认证方式 没有短信验证码登录功能  |
+| 200009 | 应用合法性校验失败             |
 
 <div STYLE="page-break-after: always;"></div>
 
