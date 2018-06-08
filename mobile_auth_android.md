@@ -10,13 +10,10 @@
 
 2. 使用平台本机号码校验接口，进行号码校验
 
-    </br>
 
 ## 1.2. 新建工程并导入SDK的jar文件
 
 将`mobile_auth_android_*.jar`拷贝到应用工程的libs目录下，如没有该目录，可新建；
-
-</br>
 
 ## 1.3. 配置AndroidManifest
 
@@ -33,11 +30,7 @@
 
 ```
 
-
-
-通过以上步骤，工程就已经配置完成了。接下来就可以在代码里使用统一认证的SDK进行开发了S
-
-</br>
+通过以上步骤，工程就已经配置完成了。接下来就可以在代码里使用统一认证的SDK进行开发了
 
 ## 1.4. SDK使用步骤
 
@@ -133,23 +126,17 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 
 获取管理类的实例对象
 
-</br>
-
 **原型**
 
 ```java
 public AuthnHelper (Context context)
 ```
 
-</br>
-
 ### 2.1.2. 参数说明
 
 | 参数      | 类型      | 说明                              |
 | ------- | ------- | ------------------------------- |
 | context | Context | 调用者的上下文环境，其中activity中this即可以代表。 |
-
-</br>
 
 ## 2.2. 获取校验凭证token
 
@@ -160,8 +147,6 @@ public AuthnHelper (Context context)
 **openId：**每个APP每个手机号码对应唯一的openId。</br>
 
 **临时凭证token：**开发者服务端可凭临时凭证token通过3.1本机号码校验接口对本机号码进行验证。
-
-</br>
 
 **原型**
 
@@ -176,8 +161,6 @@ public void umcLoginByType(final String appId,
             final TokenListener listener, 
 	    TraceLogger mTraceLogger)
 ```
-
-</br>
 
 ### 2.2.2. 参数说明
 
@@ -209,8 +192,6 @@ OnGetTokenComplete的参数JSONObject，含义如下：
 | openId      | String | 成功时返回：用户身份唯一标识                           |
 | securityphone  | String | 成功时返回：用户手机号掩码                           |
 | traceId      | String | 请求唯一标示                        |
-
-</br>
 
 ### 2.2.3. 示例
 
@@ -255,10 +236,6 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 public void cancel()
 ```
 
-</br>
-
-
-
 ### 2.3.2. 示例
 
 **请求示例代码**
@@ -268,8 +245,6 @@ public void cancel()
   mAuthnHelper.cancel();               
  
 ```
-
-
 
 
 <div STYLE="page-break-after: always;"></div>
@@ -444,8 +419,6 @@ public void cancel()
 | 105007 | 手机号码格式错误             |
 | 105008 | 短信内容为空               |
 | 105009 | 解析失败                 |
-
-</br>
 
 ## 4.2. SDK返回码说明
 
