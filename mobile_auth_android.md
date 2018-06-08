@@ -207,6 +207,7 @@ OnGetTokenComplete的参数JSONObject，含义如下：
 | resultDesc  | String | 失败时返回：返回错误码说明                            |
 | token       | String | 成功时返回：身份标识，字符串形式的token，第三方应用将该凭证经应用平台向统一认证平台请求认证 |
 | openId      | String | 成功时返回：用户身份唯一标识                           |
+| securityphone  | String | 成功时返回：用户手机号掩码                           |
 | traceId      | String | 请求唯一标示                        |
 
 </br>
@@ -231,12 +232,13 @@ mAuthnHelper.umcLoginByType(Constant.APP_ID,
 
 ```
 {
-    "resultCode": "103000",
-    "authType": "2",
-    "authTypeDes": "网关鉴权",
-    "traceId":"5cfb48e0e6384b2b8dd9231a15ba59ed",
-    "openId": "9M7RaoZH1Q95QzY99YFkeFDO4xDfOv5q4BVlwn_0zJNNlNYUkxrw",
-    "token": "8484010001330200374D455979526A49354E6A59774E444D314E454E47516B4D3140687474703A2F2F3231312E3133362E31302E3133313A383038302F40303103000402D59A6B040012383030313230313730383138313031343437050010D2F28C555CB54316B7D031DE9F6F6B1EFF0020F07B4AAFC3B1499A250AAAB4272BBFB565B440FFA5C8257E90C28595956CC224"
+    "resultCode":"103000",
+    "authType":"2",
+    "authTypeDes":"网关鉴权",
+    "traceId":"75de5ad8f5b04074a1e85b3935ad197a",
+    "openId":"9M7RaoZH1Q95QzY99YFkeFDO4xDfOv5q4BVlwn_0zJNNlNYUkxrw",
+    "securityphone":"138****5380",
+    "token":"STsid0000001528250537839kDSwAonpXeFGHlwwbT2TZQRaYKOWOC2j"
 }
 ```
 
